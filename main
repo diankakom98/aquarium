@@ -140,32 +140,6 @@ public:
 			            dx = speed;
             }
          }
-         
-         void checkCollisionWithMap(float Dx, float Dy)//ф-ция проверки столкновений с картой
-         {
-             for (int i = y / 32; i < (y + h) / 32; i++)//проходимся по элементам карты
-                for (int j = x / 32; j < (x + a) / 32; j++)
-                {
-                   if (TileMap[i][j] == '0')
-				           {
-                        if (Dy > 0) {
-                           y = i * 32 - b;  dy = -0.1;
-						               direction = rand() % (4); //Направление движения врага
-                        }
-                        if (Dy < 0) {
-                           y = i * 32 + 32; dy = 0.1;
-						               direction = rand() % (4);//Направление движения врага
-                        } //столкновение с верхним краем карты
-                        if (Dx > 0) {
-                           x = j * 32 - ф; dx = -0.1;
-						               direction = rand() % (4);//Направление движения врага
-                        } //столкновение с правым краем карты
-                        if (Dx < 0) {
-                           x = j * 32 + 32; dx = 0.1;
-						               direction = rand() % (4); //Направление движения врага
-                        } //столкновение с левым краем карты
-                   }
-             }
          }
          
          void update(float time)
@@ -246,7 +220,7 @@ int main()
 	      std::list<Entity*>  Bullets; //список корма
 	      std::list<Entity*>::iterator it; //итератор чтобы проходить по элементам списка
         
-        const int ENEMY_COUNT = 1;	//максимальное количество врагов в игре
+        const int ENEMY_COUNT = 3;	//максимальное количество врагов в игре
 	      int enemiesCount = 0;	//текущее количество врагов в игре
         
         for (int i = 0; i < ENEMY_COUNT; i++)
